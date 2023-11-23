@@ -1,3 +1,9 @@
+<form action="" method="GET">
+    <input type="text" name="password_length">
+    <input type="submit">
+</form>
+
+
 <?php
 // recupero la lunghezza della password dall'input dell'utente
 $passwordLength = ($_GET['password_length']);
@@ -9,17 +15,18 @@ $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!()
 
 $shuffledChars = str_shuffle($characters);
 
-$passwordString = mb_substr($shuffledChars,0,$passwordLength);
+$password = mb_substr($shuffledChars,0,$passwordLength);
 
-var_dump($passwordString);
+echo 'La tua password è'.' '. ':'.' '. $password;
 }
 
 //invoco la funzione
-getRandomPassword($passwordLength);
+if (is_numeric($passwordLength)) {
+    getRandomPassword($passwordLength);
+} else {
+    echo 'Inserisci un numero!';
+}
+
 ?>
 
-<form action="" method="GET">
-    <input type="text" name="password_length">
-    <input type="submit">
-</form>
 
